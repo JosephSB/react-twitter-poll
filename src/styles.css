@@ -1,0 +1,63 @@
+.container-survey{
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  /*background-color: aquamarine;*/
+}
+
+.survey-title{
+  margin: 5px 0;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.option-survey{
+  width: 100%;
+  padding: 0.5rem;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color .1s;
+  font-size: 16px;
+}
+
+.option-survey:hover{
+  background-color: #cccccc27;
+}
+
+.option-result-survey{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 5px 0;
+}
+
+.option-result-survey p{
+  margin: 5px;
+  z-index: 5;
+}
+
+.progress-survey{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #cccccc27;
+}
+
+.footer-survey{
+  margin: 5px 0;
+}
+
+.active{
+  font-weight: bold;
+}
+
+.active .progress-survey{
+  background-color: rgba(135, 207, 235, 0.453);
+}
