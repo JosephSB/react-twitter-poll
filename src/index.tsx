@@ -68,4 +68,5 @@ const ReactTwitterPoll = ({ title, options, footerVisible = true, onVote, option
   )
 }
 
+export type { option }
 export default ReactTwitterPoll

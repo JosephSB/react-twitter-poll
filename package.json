@@ -6,7 +6,7 @@
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "microbundle-crl --no-compress --format modern,cjs --css-modules false",
     "start": "microbundle-crl watch --no-compress --format modern,cjs"
   },
   "engines": {
@@ -37,5 +37,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.2.2"
-  }
+  },
+  "files": [
+    "dist/*.css"
+    ]
 }
