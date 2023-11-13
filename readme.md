@@ -26,7 +26,8 @@ yarn add react-twitter-poll
 
 ```ts
 import React, { useState } from 'react';
-import ReactTwitterPoll, { option } from 'react-twitter-poll';
+import ReactTwitterPoll from 'react-twitter-poll';
+import 'react-twitter-poll/dist/index.css';
 
 const dataOptions = [
   {

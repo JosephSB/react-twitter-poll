@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import ReactTwitterPoll from './ReactTwitterPoll';
-import { option } from './ReactTwitterPoll/types/option';
+//import ReactTwitterPoll from './ReactTwitterPoll';
+//import { option } from './ReactTwitterPoll/types/option';
+import ReactTwitterPoll from 'react-twitter-poll';
+import 'react-twitter-poll/dist/index.css';
 
 const dataOptions = [
   {
@@ -29,7 +31,7 @@ function App() {
   const [options, setOptions] = useState([...dataOptions]);
   //const [optionSelected, setoptionSelected] = useState();
 
-  const handleVote = (item: option) => {
+  const handleVote = (item: any) => {
     const tempOptions = [...options];
     const index = tempOptions.findIndex(x => x.id === item.id);
     tempOptions[index].votes = tempOptions[index].votes + 1
