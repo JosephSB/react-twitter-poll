@@ -1,10 +1,19 @@
 {
   "name": "react-twitter-poll",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "React-Twitter-Poll is a React library for creating polls like Twitter or Facebook. It is easy to use and flexible, and allows developers to create polls of different types, with different visualization options and analysis data.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "source": "src/index.tsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "peerDependencies": {
+    "react": ">=16"
   },
   "repository": "JosephSB/react-twitter-poll",
   "keywords": [
@@ -24,6 +33,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.2.37",
+    "microbundle-crl": "^0.13.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.2.2"
