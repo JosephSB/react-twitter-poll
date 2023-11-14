@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-//import ReactTwitterPoll from './ReactTwitterPoll';
-//import { option } from './ReactTwitterPoll/types/option';
-import ReactTwitterPoll from 'react-twitter-poll';
-import 'react-twitter-poll/dist/index.css';
+import ReactTwitterPoll from './ReactTwitterPoll';
+//import ReactTwitterPoll from 'react-twitter-poll';
+//import 'react-twitter-poll/dist/index.css';
 
 const dataOptions = [
   {
@@ -45,6 +44,8 @@ function App() {
         title='¿Cual es tu equipo favorito de la Liga 1?'
         options={options}
         onVote={handleVote}
+        //CustomOption={(props) => <button onClick={props.onClick} style={{backgroundColor: "yellowgreen"}}>{props.item.text}</button>}
+        //CustomTitle={(props) => <h1>{props.title}</h1>}
         //optionSelected={options[2]}
       />
     </div>

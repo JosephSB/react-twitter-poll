@@ -14,3 +14,10 @@ code {
 .App{
   width: 30%;
 }
+.app-survey{
+  width: 100%;
+}
+
+.app-survey .option-survey{
+  background-color: yellowgreen;
+}

@@ -8,9 +8,20 @@ interface props {
   footerVisible?: boolean
   onVote: (option: option) => void
   optionSelected?: option
+  className?: string
+
+  CustomTitle?: ({ title }: { title?: string }) => JSX.Element
+  CustomFooter?: ({ totalVotes }: { totalVotes: number }) => JSX.Element
+  //CustomOption?: ({ item, onClick }: { item: option, onClick: () => void }) => JSX.Element
 }
 
-const ReactTwitterPoll = ({ title, options, footerVisible = true, onVote, optionSelected }: props) => {
+const ReactTwitterPoll = (props: props) => {
+  const {
+    title, options, footerVisible = true,
+    onVote, optionSelected, className,
+
+    CustomTitle, CustomFooter
+  } = props
   const [selected, setSelected] = useState(optionSelected ? optionSelected : null);
   const [isVoted, setIsVoted] = useState(optionSelected ? true : false);
 
@@ -30,28 +41,28 @@ const ReactTwitterPoll = ({ title, options, footerVisible = true, onVote, option
 
   if (isVoted) {
     return (
-      <div className='container-survey'>
-        {title && <p className='survey-title'>{title}</p>}
+      <div className={className ? className : 'container-survey'}>
+        {title && (CustomTitle ? <CustomTitle title={title} /> : <p className='survey-title'>{title}</p>)}
         {
           options.map((item) => (
             <div
               key={item.id}
               className={`option-result-survey ${selected?.id === item.id ? "active" : ""}`}
             >
-              <div className='progress-survey' style={{width: `${Math.round( (item.votes/totalVotes) * 100 )}%`}}></div>
+              <div className='progress-survey' style={{ width: `${Math.round((item.votes / totalVotes) * 100)}%` }}></div>
               <p>{item.text}</p>
-              <p>{Math.round( (item.votes/totalVotes) * 100 )} %</p>
+              <p>{Math.round((item.votes / totalVotes) * 100)} %</p>
             </div>
           ))
         }
-        {footerVisible && <p className='footer-survey'>{totalVotes} votes</p>}
+        {footerVisible && (CustomFooter ? <CustomFooter totalVotes={totalVotes} /> : <p className='footer-survey'>{totalVotes} votes</p>)}
       </div>
     )
   }
 
   return (
-    <div className='container-survey'>
-      {title && <p className='survey-title'>{title}</p>}
+    <div className={className ? className : 'container-survey'}>
+      {title && (CustomTitle ? <CustomTitle title={title} /> : <p className='survey-title'>{title}</p>)}
       {
         options.map((item) => (
           <button
@@ -63,7 +74,7 @@ const ReactTwitterPoll = ({ title, options, footerVisible = true, onVote, option
           </button>
         ))
       }
-      {footerVisible && <p className='footer-survey'>{totalVotes} votes</p>}
+      {footerVisible && (CustomFooter ? <CustomFooter totalVotes={totalVotes} /> : <p className='footer-survey'>{totalVotes} votes</p>)}
     </div>
   )
 }
