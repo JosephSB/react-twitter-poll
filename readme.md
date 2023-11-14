@@ -79,6 +79,20 @@ export default App;
 
 ```
 
+## Component Props
+
+| Prop | Type | Required | Default | Description |
+| ---- | ---- | -------- | ------- | ----------- |
+| options | option | ✔ | undefined  |  An array of objecst to vote on with keys "id", "text" and "votes" |
+| title | string | ✖ | undefined | The title of the poll |
+| footerVisible |  boolean | ✖ | true | Whether or not to show a footer with the total number of votes |
+| onVote | (option: option) => void | ✔ | undefined | A callback function that is called when an option is selected |
+| optionSelected | option | ✖ | undefined | The selected option |
+| className | string | ✖ | undefined | A CSS class to apply to the poll container |
+| CustomTitle | ({ title }: { title?: string }) => JSX.Element | ✖ | undefined  | A custom component to render the title of the poll |
+| CustomFooter | ({ totalVotes }: { totalVotes: number }) => JSX.Element | ✖ | undefined | A custom component to render the footer of the poll |
+| CustomOption | 	({ item, onClick }: { item: option, onClick: () => void }) => JSX.Element | ✖ | undefined | A custom component to render an option |
+| CustomOptionSelected | ({ item, percentVotes, isSelected }: { item: option, percentVotes: number, isSelected: boolean }) => JSX.Element | ✖ | undefined | A custom component to render a selected option |
 
 
 ## License
