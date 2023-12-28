@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactTwitterPoll from './ReactTwitterPoll';
 import { render, screen, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom';
 
 const testOptions = [
@@ -42,21 +41,33 @@ describe("Testing Component React Twitter Poll", () => {
     );
   });
 
-  /*test("It should increase votes (+1) if you click on an option", () => {
+  const mockOnVote = jest.fn(x => 42 + x);
+  test("Should be exec function onVote when clicking option", () => {
+    render(
+      <ReactTwitterPoll
+        options={testOptions}
+        onVote={mockOnVote}
+      />
+    );
+
+    fireEvent.click(screen.getByText('test 1'));
+
+    expect(mockOnVote.mock.calls).toHaveLength(1);
+  });
+
+  test("Should be render total votes when clicking option", () => {
     render(
       <ReactTwitterPoll
         options={testOptions}
         onVote={() => { }}
       />
     );
-    //console.log(screen.getByText('test 1'))
+
     fireEvent.click(screen.getByText('test 1'))
-    console.log(screen)
     const totalTestVotes = testOptions.reduce((a, b) => a + b.votes, 0);
 
-    screen.getByText(`${totalTestVotes} votes`)
-    //expect(screen.getByText(`${totalTestVotes + 1} votes`)).toHaveTextContent('hello there')
-  });*/
+    expect(screen.getByText(`${totalTestVotes} votes`)).toBeInTheDocument();
+  });
 
   test("Should be render a custom title", () => {
     const testTitle = "test title"

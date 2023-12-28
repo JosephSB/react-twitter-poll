@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import './styles.css';
 import { option } from './types/option';
 
@@ -41,6 +41,12 @@ const ReactTwitterPoll = (props: props) => {
     setSelected(item)
   }
 
+  const calcPercent = useCallback((votes: number) => {
+    let percent = Math.round((votes / totalVotes));
+    if(!percent) return 0
+    return percent * 100;
+  }, [totalVotes]);
+
   if (isVoted) {
     return (
       <div className={className ? className : 'container-survey'}>
@@ -52,7 +58,7 @@ const ReactTwitterPoll = (props: props) => {
               <CustomOptionSelected
                 key={item.id}
                 item={item}
-                percentVotes={Math.round((item.votes / totalVotes) * 100)}
+                percentVotes={calcPercent(item.votes)}
                 isSelected={selected?.id === item.id}
               />
               : (
@@ -60,9 +66,9 @@ const ReactTwitterPoll = (props: props) => {
                   key={item.id}
                   className={`option-result-survey ${selected?.id === item.id ? "active" : ""}`}
                 >
-                  <div className='progress-survey' style={{ width: `${Math.round((item.votes / totalVotes) * 100)}%` }}></div>
+                  <div className='progress-survey' style={{ width: `${calcPercent(item.votes)}%` }}></div>
                   <p>{item.text}</p>
-                  <p>{Math.round((item.votes / totalVotes) * 100)} %</p>
+                  <p>{calcPercent(item.votes)} %</p>
                 </div>
               ))
         }

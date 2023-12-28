@@ -7,22 +7,22 @@ const dataOptions = [
   {
     id: 0,
     text: "Universitario",
-    votes: 18
+    votes: 0
   },
   {
     id: 1,
     text: "Alianza Lima",
-    votes: 14
+    votes: 0
   },
   {
     id: 2,
     text: "Melgar",
-    votes: 3
+    votes: 0
   },
   {
     id: 3,
     text: "Sporting Cristal",
-    votes: 15
+    votes: 0
   }
 ]
 
